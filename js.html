@@ -1,0 +1,136 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,">
+		<title>js assignment 1</title>
+		<link rel="stylesheet" type="text/css" href="style-js.css">
+		
+	</head>
+	<body class="main" style="padding-top:2px">
+		
+		<div class="WebContainer">				
+				
+				 <a href='https://www.google.com/' target="_blank"><button class="GFG">tab1</button></a> 
+				 <a href='https://www.google.com/' target="_blank"><button class="GFG">tab2</button></a> 
+				 <a href='https://www.google.com/' target="_blank"><button class="GFG">tab3 	</button></a> 
+				 
+				<form  name="form1" action="">
+				
+					<label for="name" >Enter Your Name</label><br>
+					<input type="text" id="name" name="name" placeholder="yourname" onchange="textval(document.form1.name)" required="True" style="width:50%" ><br>
+					
+					<label for="email">E-mail address</label><br>
+					<input type="text" id="email" name="email" placeholder="ex:abc@def.com" onchange="mailval(document.form1.email)" required="True"style="width:50%"><br>
+					
+					<label for="country"> Coutry</label><br>
+					<select id="country" name="country" required style="width:50%">
+						<option value="INDIA" selected>INDIA</option>
+						<option value="japan">japan</option>
+						<option value="usa">usa</option>
+						<option value="australia">australia</option>
+						<option value="china">China</option>
+						<option value="colombia">Colombia</option>
+						<option value="france">france</option>
+						<option value="brazil">brazil</option>
+						<option value="paris">paris</option>
+					</select>
+					<br>
+					
+					<label for="mobile">Mobile</label><br>
+					<input type="text" id="mobile" name="mobie" placeholder="9876543210" onchange="mobchk(ip)" required="True" style="width:50%"><br>
+					
+					<label for="age">Age</label><br>
+					<input type="text" id="age" name="age" placeholder="Enter your Age" onchange="agenum()" onchange="acheck()" style="width:50%" required="True"><br>
+					
+					<label for="voter">VoterID</label><br>
+					<input type="text" id="vid" name="vid" placeholder="Enter your voter ID number" onchange="vid()" required="True" style="width:50%"><br>
+					
+					<button class="open-button" onclick="openForm()">Add Contact</button><br>
+	
+					<div class="form-popup" id="myForm">
+						
+					
+						<label for="name1"> Name</label><br>
+						<input type="text" id="name1" name="name1" placeholder="yourname" required style="width:50%"><br>
+						
+						<label for="email1">Email</label><br>
+						<input type="text" id="email1" name="email1" placeholder="Enter Email" required style="width:50%"><br>
+						
+						<button type="button" class="btn cancel" onclick="closeForm()">Close</button><br>
+						<button class="open-button" onclick="openForm()">Add Contact</button><br>
+					</div>
+					<input type="submit" value="Submit" onClick="vidcheck()">
+				</form>
+			</div>
+			
+		<script>
+			//for mobile number
+			function mobchk(ip){
+			var no=/^\+?([1-9]{1})\)?[-. ]?([0-9]{9})$/;
+			if((ip.value.match(no))){
+				return true;}
+				else{
+				alert("invalid Entry");
+				return false;}
+				}
+			
+			//for name
+			function textval(ip){
+				var word=/^[A-Za-z\s]+$/;
+				if(ip.value.match(word)){
+					return true;}
+				else{
+					alert('invalid entry');
+					return false;
+				}
+			}
+			//for email
+			function mailval(ip){
+				var word = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				if(ip.value.match(word)){
+				document.form1.text1.focus();
+				return true;
+			}
+			else{
+				alert('ivalid entry');
+				document.form1.focus();
+				return false;
+			}
+		}
+		//for age
+		function acheck(){
+			var val=document.form1.age.value;
+			if(val<18){
+				alert('too young');
+				document.form1.text1.focus();
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		 function vid(){
+            var n1=document.form1.age.value;
+            var n2=document.form1.vid.value;
+            if((n1<18)&&(!(n2===""))){
+                alert("Are you sure you are 18?");
+                document.form1.age.focus();
+                return true;
+            }
+            else if((n1>18)&&(n2==="")){
+                alert("VoterId Required");
+                document.form1.vid.focus();
+            }
+        }
+		function openForm() {
+		document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+		}
+    </script>
+		</script>
+	</body>
+</html>
